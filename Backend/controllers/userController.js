@@ -16,7 +16,7 @@ const addUser = async (req, res) => {
         userName: req.body.userName,
         email: req.body.email,
         passWordHash: req.body.passWordHash,
-        jobRoleId: req.body.jobRoleId
+        jobRole: req.body.jobRole
 
     }
 
@@ -33,10 +33,12 @@ const addUser = async (req, res) => {
     }
 }
 
-
+// view users
 const viewUser = async (req, res) => {
     try{
-        let users = await User.findAll({});
+        let users = await User.findAll({
+            attributes: ['userName', 'passWordHash', 'email', 'jobRole']
+        });
         res.status(200).send(users);
     }
     catch(error){
@@ -45,6 +47,12 @@ const viewUser = async (req, res) => {
     }
 }
 
+
+// delete user
+
+const deleteUser = (req, res) => {
+
+}
 
 module.exports = {
     addUser,

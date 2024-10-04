@@ -14,8 +14,8 @@ class User {
   // Factory constructor to create a User object from a JSON map
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      username: json['username'],
-      passwordHash: json['passwordHash'],
+      username: json['userName'],
+      passwordHash: json['passWordHash'],
       jobRole: json['jobRole'],
       email: json['email'],
     );
@@ -26,7 +26,7 @@ class User {
     return {
       'userName': username,
       'passWordHash': passwordHash,
-      'jobRoleId': jobRole,
+      'jobRole': jobRole,
       'email': email,
     };
   }

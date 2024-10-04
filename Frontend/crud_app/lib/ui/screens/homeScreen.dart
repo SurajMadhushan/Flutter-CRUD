@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import './signInScreen.dart';
+import './userListScreen.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +19,10 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/user-list');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserListScreen()),
+                );
               },
               child: Text('User List'),
               style: ElevatedButton.styleFrom(

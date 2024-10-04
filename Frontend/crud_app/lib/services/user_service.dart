@@ -38,20 +38,25 @@ class UserService {
   // get all users
 
   Future<List<User>> getUsers() async {
-    final String baseUrl = "";
+    final String baseUrl2 = 'http://192.168.8.191:8080/getUsers';
 
-    final url = Uri.parse(baseUrl);
+    final url2 = Uri.parse(baseUrl2);
     try {
-      final response = await http.get(url);
+      final response = await http.get(url2);
+      print(response.statusCode);
 
       if (response.statusCode == 200) {
         List<dynamic> userListJson = jsonDecode(response.body);
+
+        // Check if the user list is parsed correctly
+        print('Parsed JSON: $userListJson');
+        
         return userListJson.map((json) => User.fromJson(json)).toList();
       } else {
         throw Exception("Failed to load users");
       }
     } catch (e) {
-      print("Error occured");
+      print("Error occured: $e");
       return [];
     }
   }
