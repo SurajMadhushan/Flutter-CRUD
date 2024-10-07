@@ -31,10 +31,15 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create User'),
+        title: Text(
+          'Create User',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
+        backgroundColor: Colors.blue[900], // Dark blue theme for the AppBar
       ),
-      body: Padding(
+      body: Container(
+        color: Color.fromARGB(255, 207, 207, 207), // Light grey background
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey, // Attach the global key to the Form
@@ -163,7 +168,12 @@ class _SignInPageState extends State<SignInPage> {
                   },
                   child: Text('Create'),
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 0, 58, 146), // Dark blue button
+                    foregroundColor: Colors.white, // White text color
                     minimumSize: Size(double.infinity, 50), // Full width button
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20), // Rounded corners
+                    ),
                   ),
                 ),
               ],

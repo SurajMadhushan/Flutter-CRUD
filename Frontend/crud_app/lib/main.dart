@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Splash Screen Demo',
       theme: ThemeData(
-        primaryColor: Colors.green[800],
-        scaffoldBackgroundColor: Colors.green[50],
+        primaryColor: Colors.blue[900], // Set primary color to dark blue
+        scaffoldBackgroundColor: Colors.grey[200], // Light grey background for the app
       ),
       home: SplashScreen(),
     );
@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Icon(
               Icons.eco,
               size: 100,
-              color: Colors.green[400], // Green icon
+              color: Colors.blue[900], // Dark blue icon for consistency
             ),
             SizedBox(height: 20),
             Text(
@@ -59,31 +59,13 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.green[500], // Darker green text
+                color: Colors.blue[800], // Darker blue text
               ),
             ),
           ],
         ),
       ),
-      backgroundColor: Colors.green[50], // Light green background
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-        backgroundColor: Colors.green[400], // Green AppBar
-      ),
-      body: Center(
-        child: Text(
-          'Welcome to the home screen!',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      backgroundColor: Colors.grey[200], // Light grey background
     );
   }
 }
