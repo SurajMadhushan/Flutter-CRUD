@@ -37,7 +37,7 @@ const addUser = async (req, res) => {
 const viewUser = async (req, res) => {
     try{
         let users = await User.findAll({
-            attributes: ['userName', 'passWordHash', 'email', 'jobRole']
+            attributes: ['userId','userName', 'email', 'jobRole']
         });
         res.status(200).send(users);
     }
@@ -50,11 +50,45 @@ const viewUser = async (req, res) => {
 
 // delete user
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
+    let id = req.params.id;
 
+    try{
+        let user = await User.findOne({ where: { userId: id}});
+        if(!user){
+            return res.status(404).send("Error: User not found");
+        }
+
+        await User.destroy({ where: {userId: id}});
+        return res.status(200).send(`User deleted userId = ${id}`);
+    }
+    catch(error){
+        return res.send("error occred: " + error);
+    }
+}
+
+
+// update user
+const updateUser = async (req,res) => {
+
+    let id = req.params.id;
+    
+    let user = await User.findOne({ where: { userId: id }});
+    if(!user){
+        return res.status(404).send("User not found");
+    }
+
+    try {
+        const updatedUser = await User.update(req.body, { where: {userId: id}});
+        return res.status(200).send("Updated User: " + updateUser);
+    } catch (error) {
+        return res.send("Error occured: " + error);
+    }
 }
 
 module.exports = {
     addUser,
-    viewUser
+    viewUser,
+    deleteUser,
+    updateUser
 }
